@@ -68,7 +68,10 @@ Usage Example
     uart = busio.UART(board.TX, board.RX, baudrate=115200, receiver_buffer_size=2048)
     rvc = BNO08x_RVC(uart)
     while True:
-        print("Roll: %2.2f Pitch: %2.2f Yaw: %2.2f Degrees Accel-X: %2.2f Accel-Y: %2.2f Accel-Z: %2.2f m/s^2"%rvc.heading)
+        roll, pitch, yaw, x_accel, y_accel, z_accel = rvc.heading
+        print("Roll: %2.2f Pitch: %2.2f Yaw: %2.2f Degrees" % (roll, pitch, yaw))
+        print("Acceleration X: %2.2f Y: %2.2f Z: %2.2f m/s^2" % (x_accel, y_accel, z_accel))
+        print("")
         time.sleep(0.1)
 
 Contributing
