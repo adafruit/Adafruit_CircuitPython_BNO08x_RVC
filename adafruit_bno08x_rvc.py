@@ -46,8 +46,8 @@ class BNO08x_RVC:
         (
             _index,
             yaw,
-            roll,
             pitch,
+            roll,
             x_accel,
             y_accel,
             z_accel,
@@ -60,20 +60,20 @@ class BNO08x_RVC:
         if checksum_calc != _checksum:
             return None
         yaw *= 0.01
-        roll *= 0.01
         pitch *= 0.01
+        roll *= 0.01
         x_accel *= 0.0098067
         y_accel *= 0.0098067
         z_accel *= 0.0098067
-        return (yaw, roll, pitch, x_accel, y_accel, z_accel)
+        return (yaw, pitch, roll, x_accel, y_accel, z_accel)
 
     @property
     def heading(self):
         """The current heading made up of
 
-        * Roll
-        * Pitch
         * Yaw
+        * Pitch
+        * Roll
         * X-Axis Acceleration
         * Y-Axis Acceleration
         * Z-Axis Acceleration
