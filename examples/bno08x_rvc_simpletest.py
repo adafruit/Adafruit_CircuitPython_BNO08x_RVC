@@ -4,10 +4,21 @@
 import time
 import board
 import busio
-from adafruit_bno08x_rvc import BNO08x_RVC
 
 uart = busio.UART(board.TX, board.RX, baudrate=115200, receiver_buffer_size=2048)
+
+# uncomment and comment out the above for use with Raspberry Pi
+# import serial
+# uart = serial.Serial("/dev/serial0", 115200)
+
+# for a USB Serial cable:
+# import serial
+# uart = serial.Serial("/dev/ttyUSB0", baudrate=115200)
+
+from adafruit_bno08x_rvc import BNO08x_RVC  # pylint:disable=wrong-import-position
+
 rvc = BNO08x_RVC(uart)
+
 while True:
     yaw, pitch, roll, x_accel, y_accel, z_accel = rvc.heading
     print("Yaw: %2.2f Pitch: %2.2f Roll: %2.2f Degrees" % (yaw, pitch, roll))
