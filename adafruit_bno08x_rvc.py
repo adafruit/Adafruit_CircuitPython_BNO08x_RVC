@@ -13,12 +13,14 @@ Implementation Notes
 
 **Hardware:**
 
-* `Adafruit BNO08x Breakout <https:www.adafruit.com/products/4754>`_
+* `Adafruit 9-DOF Orientation IMU Fusion Breakout - BNO085 (BNO080)
+  <https://www.adafruit.com/product/4754>`_ (Product ID: 4754)
+
 
 **Software and Dependencies:**
 
 * Adafruit CircuitPython firmware for the supported boards:
-  https://github.com/adafruit/circuitpython/releases
+  https://circuitpython.org/downloads
 
 """
 import time
@@ -33,7 +35,38 @@ class RVCReadTimeoutError(Exception):
 
 
 class BNO08x_RVC:
-    """A simple class for reading heading from the BNO08x IMUs using the UART-RVC mode"""
+    """A simple class for reading heading from the BNO08x IMUs using the UART-RVC mode
+
+    :param uart: The UART device the BNO08x_RVC is connected to.
+    :param float timeout: time to wait for readings. Defaults to :const:`1.0`
+
+
+    **Quickstart: Importing and using the device**
+
+        Here is an example of using the :class:`BNO08X_UART` class.
+        First you will need to import the libraries to use the sensor
+
+        .. code-block:: python
+
+            import board
+            import busio
+            from adafruit_bno08x_rvc import BNO08x_RVC
+
+        Once this is done you can define your `busio.UART` object and define your sensor object
+
+        .. code-block:: python
+
+            uart = busio.UART(board.TX, board.RX, baudrate=3000000, receiver_buffer_size=2048)
+            rvc = BNO08X_UART(uart)
+
+
+        Now you have access to the :attr:`heading` attribute
+
+        .. code-block:: python
+
+            yaw, pitch, roll, x_accel, y_accel, z_accel = rvc.heading
+
+    """
 
     def __init__(self, uart, timeout=1.0):
         self._uart = uart
