@@ -13,7 +13,7 @@ Implementation Notes
 
 **Hardware:**
 
-* Adafruit `Adafruit 9-DOF Orientation IMU Fusion Breakout - BNO085 (BNO080)
+* `Adafruit 9-DOF Orientation IMU Fusion Breakout - BNO085 (BNO080)
   <https://www.adafruit.com/product/4754>`_ (Product ID: 4754)
 
 
