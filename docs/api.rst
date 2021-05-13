@@ -6,3 +6,4 @@
 
 .. automodule:: adafruit_bno08x_rvc
    :members:
+   :exclude-members: RVCReadTimeoutError

@@ -23,8 +23,12 @@ Table of Contents
 .. toctree::
     :caption: Tutorials
 
+    Adafruit 9-DOF Orientation IMU Fusion Breakout - BNO085 (BNO080) Learning Guide <https://learn.adafruit.com/adafruit-9-dof-orientation-imu-fusion-breakout-bno085/>
+
 .. toctree::
     :caption: Related Products
+
+    Adafruit 9-DOF Orientation IMU Fusion Breakout - BNO085 (BNO080) <https://www.adafruit.com/product/4754>
 
 .. toctree::
     :caption: Other Links
