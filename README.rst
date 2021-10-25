@@ -74,6 +74,11 @@ Usage Example
         print("")
         time.sleep(0.1)
 
+Documentation
+=============
+
+API documentation for this library can be found on `Read the Docs <https://circuitpython.readthedocs.io/projects/bno08x_rvc/en/latest/>`_.
+
 Contributing
 ============
 
