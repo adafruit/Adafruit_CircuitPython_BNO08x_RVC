@@ -26,6 +26,12 @@ Implementation Notes
 import time
 from struct import unpack_from
 
+try:
+    from typing import Optional, Tuple
+    from busio import UART
+except ImportError:
+    pass
+
 __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_BNO08x_RVC.git"
 
@@ -37,7 +43,7 @@ class RVCReadTimeoutError(Exception):
 class BNO08x_RVC:
     """A simple class for reading heading from the BNO08x IMUs using the UART-RVC mode
 
-    :param uart: The UART device the BNO08x_RVC is connected to.
+    :param ~busio.UART uart: The UART device the BNO08x_RVC is connected to.
     :param float timeout: time to wait for readings. Defaults to :const:`1.0`
 
 
@@ -68,13 +74,15 @@ class BNO08x_RVC:
 
     """
 
-    def __init__(self, uart, timeout=1.0):
+    def __init__(self, uart: UART, timeout: float = 1.0) -> None:
         self._uart = uart
         self._debug = True
         self._read_timeout = timeout
 
     @staticmethod
-    def _parse_frame(frame):
+    def _parse_frame(
+        frame: bytes,
+    ) -> Optional[Tuple[float, float, float, float, float, float]]:
         heading_frame = unpack_from("<BhhhhhhBBBB", frame)
         (
             _index,
@@ -101,7 +109,7 @@ class BNO08x_RVC:
         return (yaw, pitch, roll, x_accel, y_accel, z_accel)
 
     @property
-    def heading(self):
+    def heading(self) -> Tuple[float, float, float, float, float, float]:
         """The current heading made up of
 
         * Yaw
