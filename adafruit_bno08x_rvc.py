@@ -121,6 +121,7 @@ class BNO08x_RVC:
 
         """
         # try to read initial packet start byte
+        self._uart.reset_input_buffer()
         data = None
         start_time = time.monotonic()
         while time.monotonic() - start_time < self._read_timeout:
