@@ -23,11 +23,13 @@ Implementation Notes
   https://circuitpython.org/downloads
 
 """
+
 import time
 from struct import unpack_from
 
 try:
     from typing import Optional, Tuple
+
     from busio import UART
 except ImportError:
     pass
